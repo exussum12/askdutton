@@ -35,6 +35,11 @@ class MessageService
 
     public function getMessage(): string
     {
-        return $this->messages[rand(0, count($this->messages) - 1)];
+        $message = $this->messages[rand(0, count($this->messages) - 1)];
+        if (str_ends_with($message, '.gif')) {
+            $message = "<img src='$message' />";
+        }
+
+        return $message;
     }
 }
